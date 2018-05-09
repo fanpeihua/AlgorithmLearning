@@ -13,18 +13,29 @@ public class Problem_04_ReverseList {
         }
     }
 
+    public static class DoubleNode {
+        public int value;
+        public DoubleNode pre;
+        public DoubleNode next;
+
+        public DoubleNode(int value) {
+            this.value = value;
+        }
+    }
+
     public static Node reverseList(Node head) {
-        Node pre = null;
-        Node next = null;
+        Node pre = null; // 上个节点
+        Node next = null;// 下个节点
         while (head != null) {
             next = head.next;
             head.next = pre;
 
             pre = head;
-            head = next; // 下一个节点作为判断节点
+            head = next;
         }
         return pre;
     }
+
 
     public static void printLinkedList(Node head) {
         System.out.println("Linked List:");
@@ -39,6 +50,7 @@ public class Problem_04_ReverseList {
         Node head1 = new Node(1);
         head1.next = new Node(2);
         head1.next.next = new Node(3);
+
         printLinkedList(head1);
         head1 = reverseList(head1);
         printLinkedList(head1);
